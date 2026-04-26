@@ -22,7 +22,7 @@ namespace multithreadedAssignment2
             RunSimulation(true);
         }
 
-        private void RunSimulation(bool useLocking)
+        private void RunSimulation(bool useLocking) // Common method to run either simulation based on the useLocking boolean
         {
             BankAccount account = new BankAccount(startBalance);
 
@@ -31,33 +31,33 @@ namespace multithreadedAssignment2
 
             for (int i = 0; i < numberOfClients; i++)
             {
-                Client client = new Client(i + 1, account);
+                Client client = new Client(i + 1, account); // Client IDs start from 1
                 clients.Add(client);
 
                 Thread thread;
 
-                if (useLocking)
+                if (useLocking) // Create thread for locking version
                     thread = new Thread(client.RunLocking);
-                else
+                else // Create thread for race condition version
                     thread = new Thread(client.RunRaceCondition);
 
                 threads.Add(thread);
             }
 
-            foreach (Thread t in threads)
+            foreach (Thread t in threads) // Start all client threads
                 t.Start();
 
             Thread.Sleep(runTime);
 
-            foreach (Client c in clients)
+            foreach (Client c in clients) // Signal all clients to stop
                 c.Stop();
 
-            foreach (Thread t in threads)
+            foreach (Thread t in threads) // Wait for all threads to finish
                 t.Join();
 
             double totalTransactions = 0;
 
-            foreach (Client c in clients)
+            foreach (Client c in clients) // Sum up total transactions from all clients
                 totalTransactions += c.GetTotalTransactions();
 
             double expectedBalance = startBalance + totalTransactions;
@@ -69,7 +69,7 @@ namespace multithreadedAssignment2
             Console.WriteLine("Actual Balance:   " + actualBalance);
             Console.WriteLine("Difference:       " + difference);
 
-            if (Math.Abs(difference) < 0.01)
+            if (Math.Abs(difference) < 0.01) // Check if the difference is negligible
                 Console.WriteLine("SUCCESS: No race condition detected.");
             else
                 Console.WriteLine("FAILURE: Race condition detected.");

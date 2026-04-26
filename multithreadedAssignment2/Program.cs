@@ -36,12 +36,12 @@
             Console.WriteLine("2. Deadlock");
         }
 
-        public void RaceCondition()
+        public void RaceCondition() // Method to run the race condition simulation
         {
             TransactionSimulator sim = new TransactionSimulator();
 
-            sim.RunRaceConditionSimulation();
-            sim.RunLockingSimulation();
+            sim.RunRaceConditionSimulation(); // Simulate the race condition (no locking)
+            sim.RunLockingSimulation(); // Simulate the locking version 
         }
 
         public void Deadlock()

@@ -18,7 +18,7 @@
         {
             int amount = random.Next(1, 100);
 
-            if (random.Next(2) == 0)
+            if (random.Next(2) == 0) // Randomly decide to deposit or withdraw
             {
                 account.DepositRace(amount);
                 totalTransactions += amount;
@@ -37,7 +37,7 @@
         {
             int amount = random.Next(1, 100);
 
-            if (random.Next(2) == 0)
+            if (random.Next(2) == 0) // Randomly decide to deposit or withdraw
             {
                 account.DepositSafe(amount);
                 totalTransactions += amount;
