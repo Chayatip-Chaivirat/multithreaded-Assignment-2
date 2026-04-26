@@ -2,15 +2,28 @@
 {
     internal class Program
     {
-        public void MainManu()
-        {
-            Console.WriteLine("Choose an option:");
-            Console.WriteLine("1. Deadlock");
-        }
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Program program = new Program();
+            program.MainManu();
+        }
+
+        public void MainManu()
+        {
+            Console.WriteLine("Choose an option:");
+            Console.WriteLine("1. Race Condition");
+            Console.WriteLine("2. Deadlock");
+        }
+
+        public void RaceCondition()
+        {
+
+        }
+
+        public void Deadlock()
+        {
+
         }
     }
 }
