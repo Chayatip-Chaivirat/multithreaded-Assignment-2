@@ -44,9 +44,12 @@
             sim.RunLockingSimulation(); // Simulate the locking version 
         }
 
-        public void Deadlock()
+        public void Deadlock() // Method to run the deadlock simulation
         {
+            DeadlockSimulator sim = new DeadlockSimulator();
 
+            sim.RunDeadlock(); // Simulate the deadlock scenario (where two threads lock resources in opposite order)
+            sim.RunSafeVersion(); // Simulate the safe version that prevents deadlock by enforcing a consistent lock order
         }
     }
 }
