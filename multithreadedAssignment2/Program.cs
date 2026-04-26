@@ -6,10 +6,30 @@
         static void Main(string[] args)
         {
             Program program = new Program();
-            program.MainManu();
+
+            while (true)
+            {
+                program.MainMenu();
+                string choice = Console.ReadLine();
+
+                if (choice == "1")
+                {
+                    Console.Clear();
+                    program.RaceCondition();
+                }
+                else if (choice == "2")
+                {
+                    Console.Clear();
+                    program.Deadlock();
+                }
+                else if (choice == "0")
+                {
+                    break;
+                }
+            }
         }
 
-        public void MainManu()
+        public void MainMenu()
         {
             Console.WriteLine("Choose an option:");
             Console.WriteLine("1. Race Condition");
@@ -18,7 +38,10 @@
 
         public void RaceCondition()
         {
+            TransactionSimulator sim = new TransactionSimulator();
 
+            sim.RunRaceConditionSimulation();
+            sim.RunLockingSimulation();
         }
 
         public void Deadlock()
